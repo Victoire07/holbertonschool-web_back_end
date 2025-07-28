@@ -2,8 +2,9 @@
 """
 Task2: Basic annotations - floor
 """
+import math
 def floor(n: float) -> int:
     """
     Retourne la partie entière inférieure d’un nombre flottant
     """
-    return()
+    return(math.floor(n))

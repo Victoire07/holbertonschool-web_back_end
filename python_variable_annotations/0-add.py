@@ -2,8 +2,8 @@
 """
 Task0 : Basic annotations - add
 """
-def add (floata : float, floatb : float):
+def add(floata : float, floatb : float):
     """
     Fonction qui aditionne 2 floats et retourne la somme
     """
-    return float(floata + float b)
+    return float(floata + floatb)

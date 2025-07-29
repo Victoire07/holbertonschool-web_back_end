@@ -22,4 +22,3 @@ async def measure_runtime():
     total_duration_variable = end - start
     average_duration = total_duration_variable / 4
     return total_duration_variable
-

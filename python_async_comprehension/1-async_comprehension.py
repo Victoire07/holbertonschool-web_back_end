@@ -10,3 +10,4 @@ async def async_comprehension():
     Coroutine collecte 10 nombres aléatoires générés par un
     générateur asynchrone et les retourne sous forme de liste
     """
+    return [val async for val in async_generator()]

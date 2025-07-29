@@ -5,6 +5,7 @@ Task 0: Async Generator
 import asyncio
 import random
 
+
 async def async_generator():
     """
     Générateur asynchrone qui boucle 10 fois

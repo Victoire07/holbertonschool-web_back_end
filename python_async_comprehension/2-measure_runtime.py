@@ -2,6 +2,12 @@
 """
 Task 2: Run time for four parallel comprehensions
 """
-async_comprehension = __import__("1-assync_comprehension").assync_comprehension
+import time
+import asyncio
+async_comprehension = __import__("1-async_comprehension").async_comprehension
 
 
+async def measure_runtime():
+    """
+    Mesure le temps total pour exécuter 4 fois async_comprehension en parallèle
+    """

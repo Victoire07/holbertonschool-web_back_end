@@ -21,4 +21,5 @@ async def measure_runtime():
     end = time.perf_counter()
     total_duration_variable = end - start
     average_duration = total_duration_variable / 4
-    return average_duration
+    return total_duration_variable
+

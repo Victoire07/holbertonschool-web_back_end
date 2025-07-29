@@ -12,5 +12,10 @@ async def wait_n(n: int, max_delay : int) -> List[float]:
     Générer wait_random n fois avec le max_delay spécifié.
     Renvoie la liste de tous les délais (valeurs flottantes)
     """
-    all_tasks = [asyncio.create_task(wait_random(max_delay)) for _ in range(n)]
+    all_tasks = [asyncio.create_task(wait_random(max_delay)) for i in range(n)]
+    results = []
+    for task in asyncio.as_completed(all_tasks):
+        result = await task
+        results.append(result)
 
+    return results

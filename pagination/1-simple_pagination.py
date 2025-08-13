@@ -2,7 +2,7 @@
 """
 Task1 -> Simple pagination
 """
-from typing import Tuple
+from typing import Tuple, List
 import csv
 import math
 

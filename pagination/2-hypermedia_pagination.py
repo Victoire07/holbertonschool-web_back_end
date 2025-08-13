@@ -85,8 +85,8 @@ class Server:
         "page_size": len(data),  # taille réelle de la page renvoyée
         "page": page,
         "data": data,
-        "next_page": next_page
-        "prev_page": prev_page
+        "next_page": next_page,
+        "prev_page": prev_page,
         "total_pages": total_pages,
         }
 

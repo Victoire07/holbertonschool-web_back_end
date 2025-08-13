@@ -51,7 +51,8 @@ class Server:
         dehors de la plage de l'ensemble de données.
 
         Lève :
-        ° AssertionError : si `page` ou `page_size` ne sont pas des entiers positifs.
+        ° AssertionError : si `page` ou `page_size` ne sont pas
+        des entiers positifs.
         """
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0

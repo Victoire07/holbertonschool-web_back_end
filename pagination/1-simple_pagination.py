@@ -4,7 +4,7 @@ Task1 -> Simple pagination
 """
 import csv
 import math
-from typing import Tuple, List
+from typing import List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -30,7 +30,7 @@ class Server:
         Cached dataset
         """
         if self.__dataset is None:
-            with open(self.DATA_FILE, encoding="utf-8") as f:
+            with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
             self.__dataset = dataset[1:]

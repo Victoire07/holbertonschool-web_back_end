@@ -38,6 +38,21 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        Renvoie une page spécifique de l'ensemble de données.
+
+        Arguments :
+        °page (int) : numéro de la page à récupérer (indexée à partir de 1).
+        °0 page_size (int) : nombre d'éléments par page.
+
+        Retour:
+        ° List[List] : une sous-liste de l'ensemble de données correspondant
+        à la page demandée. Retourne une liste vide sil'index de départ est en
+        dehors de la plage de l'ensemble de données.
+
+        Lève :
+        ° AssertionError : si `page` ou `page_size` ne sont pas des entiers positifs.
+        """
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
 

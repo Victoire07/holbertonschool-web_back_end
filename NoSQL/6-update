@@ -1,14 +1,14 @@
 // Script avec cde qui met à jour tous les documents de la collection school dont le champ name vaut "Holberton school"
-db.schoool.update(
+db.school.update(
     {
         "name": "Holberton school"
     },
     {
-        $set: { 
+        $set: {
             "address": "972 Mission street"
         }
     },
     {
-        multi: true 
+        multi: true
     }
 )

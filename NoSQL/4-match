@@ -1,3 +1,3 @@
 // Script qui affiche tous les documents de la collection school où le champ name vaut exactement "Holberton school"
 
-db.school.find({"Holberton school"})
+db.school.find({"name": "Holberton school"})

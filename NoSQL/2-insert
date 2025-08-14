@@ -1,0 +1,3 @@
+// script qui insère un document dans la collection 'schoo'
+
+db.school.insert({"name": "Holberton school"})

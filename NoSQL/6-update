@@ -1,5 +1,5 @@
 // Script avec cde qui met à jour tous les documents de la collection school dont le champ name vaut "Holberton school"
-db.employee.update(
+db.schoool.update(
     {
         "name": "Holberton school"
     },

@@ -1,0 +1,3 @@
+// Script qui supprime tous les documents de la collection school dont le champ name vaut "Holberton school"
+
+db.school.drop()

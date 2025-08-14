@@ -1,0 +1,3 @@
+// Cde MongoDB qui permet de se connecter à une base (et la créer si elle n’existe pas encore)
+
+use my_db

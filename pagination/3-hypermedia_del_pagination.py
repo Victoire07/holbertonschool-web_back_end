@@ -43,5 +43,8 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
+        Dataset indexé par position triée, à partir de 0.
+        Les clés sont des entiers (index), les valeurs sont
+        les lignes (List[str]).
         """
         pass

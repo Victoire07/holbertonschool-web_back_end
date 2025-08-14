@@ -1,0 +1,2 @@
+// script qui répertorie tous les documents de la collection 'school'
+db.school.find()

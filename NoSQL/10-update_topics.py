@@ -19,4 +19,4 @@ def update_topics(mongo_collection, name, topics):
               les documents dans la collection.
     """
     return mongo_collection.update_many({"name": name},
-                                       {"$set":{"topics" :topics}})
+                                    {"$set":{"topics" :topics}})

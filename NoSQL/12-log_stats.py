@@ -10,19 +10,21 @@ collection = db.nginx
 total_logs = collection.count_documents({})
 print(f"{total_logs} logs")
 
+print("Methods:")
 
-collection.count_documents({"method": "GET"})
-print("GET")
+get_count = collection.count_documents({"method": "GET"})
+print(f"\tmethod GET: {get_count}")
 
-collection.count_documents({"method": "POST"})
-print("POST")
+post_count = collection.count_documents({"method": "POST"})
+print(f"\tmethod POST: {post_count}")
 
-collection.count_documents({"method": "PUT"})
-print("PUT")
 
-collection.count_documents({"method": "DELETE"})
-print("DELETE")
 
-collection.count_documents({"method": "GET", "path": "/status"})
-print("y status check")
+
+
+
+
+
+
+
 

@@ -18,6 +18,18 @@ print(f"\tmethod GET: {get_count}")
 post_count = collection.count_documents({"method": "POST"})
 print(f"\tmethod POST: {post_count}")
 
+put_count = collection.count_documents({"method": "PUT"})
+print (f"\tmethod PUT: {put_count}")
+
+patch_count = collection.count_documents({"method": "PATCH"})
+print (f"\tmethod PATCH: {patch_count}")
+
+delete_count = collection.count_documents({"method": "DELETE"})
+print(f"\tmethod DELETE: {delete_count}")
+
+
+
+
 
 
 

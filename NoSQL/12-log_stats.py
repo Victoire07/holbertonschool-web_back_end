@@ -27,16 +27,5 @@ print (f"\tmethod PATCH: {patch_count}")
 delete_count = collection.count_documents({"method": "DELETE"})
 print(f"\tmethod DELETE: {delete_count}")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+status_check = collection.count_documents({"method": "GET", "path": "/status"})
+print(f"{status_check} status check")

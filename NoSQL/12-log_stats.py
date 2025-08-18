@@ -7,9 +7,9 @@ client = MongoClient()
 db = client.logs
 collection = db.nginx
 
+total_logs = collection.count_documents({})
+print(f"{total_logs} logs")
 
-collection.count_documents({})
-print("x logs")
 
 collection.count_documents({"method": "GET"})
 print("GET")

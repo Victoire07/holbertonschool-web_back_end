@@ -3,8 +3,7 @@ export default function taskBlock(trueOrFalse) {
   const task2 = true;
 
   if (trueOrFalse) {
-    const task = true;
-    const task2 = false;
+    // bloc vidé pour respect de la norme
   }
 
   return [task, task2];

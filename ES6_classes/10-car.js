@@ -14,7 +14,14 @@ export default class Car {
     this._motor = motor;
     this._color = color;
   }
+
+  // Symbol.species permet de contrôler quelle classe est utilisée
+  static get [Symbol.species]() {
+    return this;
+  }
+
   cloneCar() {
+    const Constructor = this.constructor[Symbol.species];
     return new this.constructor();
   }
 }

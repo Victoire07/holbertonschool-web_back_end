@@ -1,13 +1,13 @@
 export default class Car {
   constructor(brand, motor, color) {
     if (typeof brand !== 'string') {
-      throw new TypeError('brand must be a string')
+      throw new TypeError('brand must be a string');
     }
     if (typeof motor !== 'string') {
-      throw new TypeError('motor must be a string')
+      throw new TypeError('motor must be a string');
     }
     if (typeof color !== 'string') {
-      throw new TypeError('color must be a string')
+      throw new TypeError('color must be a string');
     }
 
     this._brand = brand;
@@ -15,13 +15,7 @@ export default class Car {
     this._color = color;
   }
 
-  // Symbol.species permet de contrôler quelle classe est utilisée
-  static get [Symbol.species]() {
-    return this;
-  }
-
   cloneCar() {
-    const Constructor = this.constructor[Symbol.species];
     return new this.constructor();
   }
 }

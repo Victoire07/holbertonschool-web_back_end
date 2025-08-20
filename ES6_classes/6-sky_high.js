@@ -7,7 +7,6 @@ export default class SkyHighBuilding extends Building {
       throw new TypeError('floors must be a number')
     }
 
-    this._sqft = sqft;
     this._floors = floors;
   }
 

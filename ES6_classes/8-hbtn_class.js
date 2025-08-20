@@ -10,4 +10,15 @@ export default class HolbertonClass {
     this._size = size;
     this._location = location;
   }
+
+  //  Méthode spéciale qui définit comment l'objet est converti
+  [Symbol.toPrimitive](hint) {
+    if (hint === "number") {
+      return this._size
+    }
+    if (hint === "string") {
+      return this._location
+    }
+    return this._size;
+  }
 }

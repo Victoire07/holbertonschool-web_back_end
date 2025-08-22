@@ -17,7 +17,7 @@ export default class Car {
 
   // Toujours cloner en tant que Car (pas la sous-classe)
   static get [Symbol.species]() {
-    return car;
+    return Car;
   }
 
   cloneCar() {

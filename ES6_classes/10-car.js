@@ -15,12 +15,12 @@ export default class Car {
     this._color = color;
   }
 
-  // Symbol.species permet de contrôler quelle classe est utilisée
+  // Toujours cloner en tant que Car (pas la sous-classe)
   static get [Symbol.species]() {
-    return this;
+    return car;
   }
 
   cloneCar() {
-    return new this.constructor();
+    return new (this.constructor[Symbol.species])();
   }
 }

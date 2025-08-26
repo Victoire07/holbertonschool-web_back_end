@@ -1,6 +1,6 @@
 export default function cleanSet(set, startString) {
   // 1- Si startString est vide -> retourne une chaîne vide
-  if (startString.length === 0 || typeof startString !== 'string') {
+  if (typeof startString !== 'string' || startString.length === 0) {
     return '';
 } 
 

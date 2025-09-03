@@ -5,32 +5,38 @@ function countStudents(path) {
     const content = fs.readFileSync(path, 'utf8');
     const lines = content.split('\n'); // divise le contenu du CSV en un tableau de lignes
 
-    const groups = {};   // ex: { CS: ['Johann', ...], SWE: ['Guillaume', ...] }
-    let total = 0;       // total d'étudiants valides
+    const groups = {};
+    let total = 0;
 
     for (let i = 1; i < lines.length; i++) {
-  const line = lines[i].trim();
+      const line = lines[i].trim();
 
-  if (line === '') {
-    continue; // ignore les lignes vides
+      if (line === '') {
+        continue;
+      }
 
-    const parts = line.split(',');
-    if (parts.length < 4) {
-        continue; // ligne invalide → on ignore
+      const parts = line.split(',');
+      if (parts.length < 4) {
+        continue;
+      }
 
-  const firstname = parts[0].trim(); // colonne 0
-  const field = parts[3].trim();     // colonne 3
+      const firstname = parts[0].trim(); // colonne 0
+      const field = parts[3].trim();// colonne 3
 
-  if (!groups[field]) groups[field] = [];
+      if (!groups[field]) {
+        groups[field] = [];
+      }
+
       groups[field].push(firstname);
       total += 1;
-  }
+    }
 
     console.log(`Number of students: ${total}`);
+
     for (const [fieldName, list] of Object.entries(groups)) {
       console.log(`Number of students in ${fieldName}: ${list.length}. List: ${list.join(', ')}`);
     }
-  } catch {
+  } catch (err) {
     throw new Error('Cannot load the database');
   }
 }

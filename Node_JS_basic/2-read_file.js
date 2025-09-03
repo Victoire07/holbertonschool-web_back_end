@@ -1,10 +1,21 @@
-// importer fs (jso faire encore regarder google après)
+const fs = require('fs');
 function countStudents(path) {
   try {
-    (process.stdin.setEncoding('utf8'));
+    const content = fs.readFileSync(path, 'utf8');
+    const lines = content.split('\n'); // divise le contenu du CSV en un tableau de lignes
+    for (let i = 1; i < lines.length; i++) {
+  const line = lines[i].trim();
+
+  if (line === '') {
+    continue; // ignore les lignes vides
+  }
+
+  // ici tu mettras l'étape 4 (split en colonnes, etc.)
+}
+
   }
   catch {
-    throw new ('Cannot load the database')
+    throw new Error ('Cannot load the database')
   }
     
 }

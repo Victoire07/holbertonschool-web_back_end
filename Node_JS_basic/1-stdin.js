@@ -1,5 +1,5 @@
 // Afficher la question d’accueil :
-console.log('Welcome to Holberton School, what is your name?\n');
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
 // Préparer l’"écoute" sur l’entrée standard
 process.stdin.setEncoding('utf8');

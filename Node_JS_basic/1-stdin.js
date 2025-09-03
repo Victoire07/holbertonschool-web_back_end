@@ -16,7 +16,16 @@ process.stdin.on('data', (chunk) => {
   }
 });
 
-// À la fin du flux (EOF: pipe/CTRL+D), afficher le message de fermeture
-process.stdin.on('end', () => {
+let closed = false;
+function closeOnce() {
+  if (closed) return;
+  closed = true;
   process.stdout.write('This important software is now closing\n');
+}
+
+process.stdin.on('end', closeOnce);
+
+process.on('SIGINT', () => {
+  closeOnce();
+  process.exit(0);
 });

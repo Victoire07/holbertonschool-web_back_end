@@ -3,25 +3,20 @@ console.log('Welcome to Holberton School, what is your name?\n');
 
 // Préparer l’"écoute" sur l’entrée standard
 process.stdin.setEncoding('utf8');
-let closed = false;
-const closeOnce = () => {
-  if (!closed) {
-    closed = true;
-    process.stdout.write('This important software is now closing\n');
-  }
-};
 
-// Afficher le nom à la première ligne saisie
-process.stdin.once('data', (data) => {
-  const name = data.trim();
-  process.stdout.write(`Your name is: ${name}\n`);
+// Pour afficher le nom que 1 seule fois
+let printed = false;
+
+// Quand une ligne arrive, afficher "Your name is: ..."
+process.stdin.on('data', (chunk) => {
+  if (!printed) {
+    const name = chunk.trim();
+    process.stdout.write(`Your name is: ${name}\n`);
+    printed = true;
+  }
 });
 
-// Message de fermeture quand le flux se termine (EOF: pipe / Ctrl+D)
-process.stdin.on('end', closeOnce);
-
-// Message de fermeture propre si Ctrl+C
-process.on('SIGINT', () => {
-  closeOnce();
-  process.exit(0);
+// À la fin du flux (EOF: pipe/CTRL+D), afficher le message de fermeture
+process.stdin.on('end', () => {
+  process.stdout.write('This important software is now closing\n');
 });

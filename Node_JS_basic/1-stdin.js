@@ -1,8 +1,8 @@
 // Afficher la question d’accueil :
-console.log("Welcome to Holberton School, what is your name?\n")
+console.log('Welcome to Holberton School, what is your name?\n');
 
 // Préparer l’"écoute" sur l’entrée standard
-process.stdin.setEncoding("utf8");   // lire du texte et pas des buffers
+process.stdin.setEncoding('utf8');
 let closed = false;
 const closeOnce = () => {
   if (!closed) {

@@ -2,9 +2,7 @@
 const http=require("http");
 
 // créer serveur avec fonction callback
-const app=http.createServer(callback);
-
-app.on("request", (req, res) => {
+const app=http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Hello Holberton School');
 

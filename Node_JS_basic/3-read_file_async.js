@@ -9,30 +9,30 @@ function countStudents(path) {
         return;// on sort pr éviter de continuer
       }
 
-      const lines = data.split('\n');//découpe les lines
+      const lines = data.split('\n');
+      const groups = {};
+      let total = 0;
 
-      const groups = {};//stocker les étudiants par catég
-      let total = 0;//compteur
-
-      for (let index = 1; index < lines.length; index+=1) {
+      for (let index = 1; index < lines.length; index += 1) {
         const line = lines[index].trim();
 
         if (line !== '') {
           const parts = line.split(',');
-        
-        if (parts.length >= 4) {
-          const firstname = parts[0].trim(); // colonne 0
-          const field = parts[3].trim();// colonne 3
 
-          if (!groups[field]) {
-            groups[field] = [];
+          if (parts.length >= 4) {
+            const firstname = parts[0].trim(); // colonne 0
+            const field = parts[3].trim();// colonne 3
+
+            if (!groups[field]) {
+              groups[field] = [];
+            }
+            groups[field].push(firstname);
+            total += 1;
           }
-          groups[field].push(firstname);
-          total += 1;
         }
       }
-    }
-     // affichages au format exact
+
+      // affichages au format exact
       console.log(`Number of students: ${total}`);
       for (const [fieldName, list] of Object.entries(groups)) {
         console.log(`Number of students in ${fieldName}: ${list.length}. List: ${list.join(', ')}`);

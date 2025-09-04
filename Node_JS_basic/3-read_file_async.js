@@ -9,6 +9,9 @@ function countStudents(path) {
         return;
       }
 
+      const lines = data.split('\n');//découpe les lines
+      const groups = {};//stocker les étudiants par catég
+      let total = 0;//compteur
     });
   });
 }

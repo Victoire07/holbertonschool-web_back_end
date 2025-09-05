@@ -8,27 +8,20 @@ function countStudents(path) {
     const groups = {};
     let total = 0;
 
-    for (let i = 1; i < lines.length; i++) {
+    for (let i = 1; i < lines.length; i += 1) {
       const line = lines[i].trim();
 
       if (line === '') {
-        continue;
+        const parts = line.split(',');
+        if (parts.length >= 4) {
+          const firstname = parts[0].trim(); // colonne 0
+          const field = parts[3].trim();// colonne 3
+
+          if (!groups[field]) groups[field] = [];
+          groups[field].push(firstname);
+          total += 1;
+        }
       }
-
-      const parts = line.split(',');
-      if (parts.length < 4) {
-        continue;
-      }
-
-      const firstname = parts[0].trim(); // colonne 0
-      const field = parts[3].trim();// colonne 3
-
-      if (!groups[field]) {
-        groups[field] = [];
-      }
-
-      groups[field].push(firstname);
-      total += 1;
     }
 
     console.log(`Number of students: ${total}`);

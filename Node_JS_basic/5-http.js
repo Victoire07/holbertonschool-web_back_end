@@ -47,7 +47,7 @@ function buildStudentsReport(dbPath) {
       Object.keys(groups).forEach((field) => {
         const list = groups[field];
         out.push(
-          `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`;
+          `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`
         );
       });
 
@@ -92,3 +92,5 @@ const app = http.createServer((req, res) => {
 
 // lance le serveur sur le port ici 1245
 app.listen(1245);
+
+module.exports = app;

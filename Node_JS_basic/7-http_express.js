@@ -1,6 +1,6 @@
 const express = require('express');
-const fs = require('fs').promises;
-    
+const fs = require('fs');
+
 function countStudents(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
@@ -53,7 +53,7 @@ app.get('/students', async (req, res) => {
 });
 
 if (require.main === module) {
- app.listen(1245);
+  app.listen(1245);
 }
 
 module.exports = app;

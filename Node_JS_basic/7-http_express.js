@@ -1,7 +1,9 @@
+// Importe le framework Express pour créer plus facilement un serveur HTTP !
 const express = require('express');
-const fs = require('fs');
+// importe le module fs (API callback) pour lire le fichier CSV en asynchrone avec fs.readFile.
 
-function countStudents(path) {
+// Déclare une fonction qui retourne une Promesse.
+function buildStudentsReport(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
@@ -9,29 +11,49 @@ function countStudents(path) {
         return;
       }
 
-      const lines = data.split('\n');
-      const cleanLines = lines.filter((line) => line.trim() !== '');
-      const rows = cleanLines.slice(1);
-      const students = rows.map((line) => line.split(','));
+      const lines = data
+        .split('\n')
+        .map((l) => l.trim())
+        .filter((l) => l !== '');
 
-      const totalStudents = students.length;
-      let output = `Number of students: ${totalStudents}\n`;
+      if (lines.length <= 1) {
+        resolve(['Number of students: 0']);
+        return;
+      }
 
-      const fields = {};
-      for (const student of students) {
-        const firstname = student[0];
-        const field = student[3];
-        if (!fields[field]) {
-          fields[field] = [];
+      // On enlève l'entête
+      const rows = lines.slice(1);
+
+      // groups[field] = [prénom1, prénom2, ...]
+      const groups = {};
+      // ordre d'apparition des filières dans le CSV
+      const order = [];
+      let total = 0;
+
+      for (const row of rows) {
+        const parts = row.split(',');
+        if (parts.length >= 4) {
+          const firstname = parts[0].trim();
+          const field = parts[3].trim();
+
+          if (firstname && field) {
+            if (!Object.prototype.hasOwnProperty.call(groups, field)) {
+              groups[field] = [];
+              order.push(field);
+            }
+            groups[field].push(firstname);
+            total += 1;
+          }
         }
-        fields[field].push(firstname);
       }
 
-      for (const fieldName of Object.keys(fields)) {
-        const names = fields[fieldName].join(', ');
-        output += `Number of students in ${fieldName}: ${fields[fieldName].length}. List: ${names}\n`;
+      const out = [`Number of students: ${total}`];
+      for (const field of order) {
+        const list = groups[field];
+        out.push(`Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`);
       }
-      resolve(output.trim());
+
+      resolve(out);
     });
   });
 }
@@ -39,17 +61,27 @@ function countStudents(path) {
 const app = express();
 
 app.get('/', (req, res) => {
+  res.type('text/plain');
   res.send('Hello Holberton School!');
 });
 
-app.get('/students', async (req, res) => {
-  try {
-    const dataStudents = await countStudents(process.argv[2]);
-    res.setHeader('Content-type', 'text/plain');
-    res.status(200).send(`This is the list of our students\n${dataStudents}`);
-  } catch (err) {
-    res.send(err.message);
+app.get('/students', (req, res) => {
+  res.type('text/plain');
+  res.write('This is the list of our students\n');
+
+  const dbPath = process.argv[2];
+  if (!dbPath) {
+    res.end('Cannot load the database');
+    return;
   }
+
+  buildStudentsReport(dbPath)
+    .then((lines) => {
+      res.end(lines.join('\n'));
+    })
+    .catch(() => {
+      res.end('Cannot load the database');
+    });
 });
 
 if (require.main === module) {

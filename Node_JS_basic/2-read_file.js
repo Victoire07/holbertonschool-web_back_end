@@ -11,7 +11,7 @@ function countStudents(path) {
     for (let i = 1; i < lines.length; i += 1) {
       const line = lines[i].trim();
 
-      if (line === '') {
+      if (line !== '') {
         const parts = line.split(',');
         if (parts.length >= 4) {
           const firstname = parts[0].trim(); // colonne 0
